@@ -21,7 +21,24 @@
   <section class="p-8 bg-gray-50">
     <div class="container mx-auto max-w-4xl">
       <h2 class="text-3xl font-semibold mb-4 text-center">About Me</h2>
-      <p class="text-center">I'm Yan, an AI Engineer and a Data Scientist. I'm currently working on building a Retrieval Augmented Generation (RAG) system designed to handle 1000+ daily queries. I'm interested in projects involving NLP, Generative AI, and scalable ML systems.</p>
+      <div class="text-center space-y-4">
+        <p>Hello! I'm Yan, an AI Engineer and a Data Scientist. I'm currently working on building a Retrieval Augmented Generation (RAG) system designed to handle 1000+ daily queries. I'm interested in projects involving NLP, Generative AI, and scalable ML systems.</p>
+        <p class="font-semibold">Here are a few of my side projects that I am working on so far:</p>
+        <ul class="list-none space-y-2">
+          <li class="flex items-center justify-center">
+            <span class="mr-2">•</span>
+            Emotion detection of an interviewee using Convolutional Neural Network, Recurrent Neural Network, and Large Language Models to build a multi-modal ensemble model to detect the emotion of an interviewee.
+          </li>
+          <li class="flex items-center justify-center">
+            <span class="mr-2">•</span>
+            Building a Convolutional Neural Network to blend the style of a art era into a photo graph.
+          </li>
+          <li class="flex items-center justify-center">
+            <span class="mr-2">•</span>
+            Building an AI Chatbot that can be personalized to mimic a user based on RAG.
+          </li>
+        </ul>
+      </div>
     </div>
   </section>
 
@@ -29,13 +46,42 @@
   <section class="p-8 bg-white">
     <div class="container mx-auto max-w-4xl">
       <h2 class="text-3xl font-semibold mb-6 text-center">Projects</h2>
-      <div class="grid gap-6 md:grid-cols-2">
-        <div class="p-4 border rounded-lg shadow-sm text-center">
-          <h3 class="text-xl font-bold">RAG System</h3>
-          <p>Scalable Retrieval Augmented Generation system built to handle 1000+ queries per day.</p>
-          <a href="https://github.com/ynaung24" class="text-blue-500 hover:underline">View on GitHub</a>
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <!-- Causal Inference Project -->
+        <div class="p-4 border rounded-lg shadow-sm text-center hover:shadow-md transition-shadow">
+          <h3 class="text-xl font-bold mb-2">Causal Inference Analysis</h3>
+          <p class="text-gray-600 mb-4">Applied Difference-in-Differences (DiD) methodology to analyze treatment effects and draw causal inferences from observational data.</p>
+          <a href="https://github.com/ynaung24/Project-Experience/tree/main/Causal%20Inference" class="text-blue-500 hover:underline inline-flex items-center">
+            View on GitHub
+            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+            </svg>
+          </a>
         </div>
-        <!-- Add more projects here -->
+
+        <!-- Stock Price Prediction Project -->
+        <div class="p-4 border rounded-lg shadow-sm text-center hover:shadow-md transition-shadow">
+          <h3 class="text-xl font-bold mb-2">Stock Price Prediction</h3>
+          <p class="text-gray-600 mb-4">Built an Airflow pipeline for automated daily stock market data acquisition and analysis using MarketStack API and MongoDB Atlas.</p>
+          <a href="https://github.com/ynaung24/stock_price_prediction" class="text-blue-500 hover:underline inline-flex items-center">
+            View on GitHub
+            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+            </svg>
+          </a>
+        </div>
+
+        <!-- Lung Cancer Classification Project -->
+        <div class="p-4 border rounded-lg shadow-sm text-center hover:shadow-md transition-shadow">
+          <h3 class="text-xl font-bold mb-2">Lung Cancer Classification</h3>
+          <p class="text-gray-600 mb-4">Developed a machine learning model for early detection of lung cancer using medical imaging data and advanced classification techniques.</p>
+          <a href="https://github.com/ynaung24/Lung-Cancer-Classification" class="text-blue-500 hover:underline inline-flex items-center">
+            View on GitHub
+            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+            </svg>
+          </a>
+        </div>
       </div>
     </div>
   </section>
@@ -58,14 +104,14 @@
     <div class="container mx-auto max-w-4xl">
       <h2 class="text-3xl font-semibold mb-4 text-center">Contact</h2>
       <div class="text-center">
-        <p>Email: <a href="mailto:jeffaung@gmail.com" class="text-blue-500 hover:underline">Email</a></p>
-        <p>LinkedIn: <a href="https://linkedin.com/in/yannaingaung" class="text-blue-500 hover:underline">LinkedIn</a></p>
+        <p>Email: <a href="mailto:jeffaung@gmail.com" class="text-blue-500 hover:underline">Email me</a></p>
+        <p>LinkedIn: <a href="https://linkedin.com/in/yannaingaung" class="text-blue-500 hover:underline">Connect with me on LinkedIn</a></p>
       </div>
     </div>
   </section>
 
   <footer class="p-4 text-center text-sm text-gray-500 bg-gray-100">
-    &copy; 2025 Yan Naung. All rights reserved.
+    &copy; 2025 Yan Naing Aung. All rights reserved.
   </footer>
 </body>
 </html> 
