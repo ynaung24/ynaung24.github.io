@@ -58,8 +58,47 @@
   <section id="projects" class="p-8 bg-white">
     <div class="container mx-auto max-w-4xl">
       <h2 class="text-3xl font-semibold mb-2 text-center">Projects</h2>
-      <p class="text-sm text-gray-500 mb-6 text-center max-w-2xl mx-auto">Each of these projects was deployed to the cloud and tested end to end. The live instances have since been taken offline to avoid ongoing hosting costs, so the source code is the best place to explore them. Walkthrough videos coming soon.</p>
+      <p class="text-sm text-gray-500 mb-6 text-center max-w-2xl mx-auto">Projects marked Deployed ran on cloud infrastructure and were tested end to end. Those live instances have since been taken offline to avoid ongoing hosting costs, so the source code is the best place to explore them.</p>
       <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <!-- VaultSentinel Project -->
+        <div class="p-4 border rounded-lg shadow-sm text-center hover:shadow-md transition-shadow">
+          <span class="inline-block mb-2 px-3 py-1 text-xs font-semibold text-blue-700 bg-blue-100 rounded-full">Deployed</span>
+          <h3 class="text-xl font-bold mb-2">VaultSentinel</h3>
+          <p class="text-gray-600 mb-4">Built a cloud-native secrets detection platform that scans repositories with a hybrid of regex, entropy analysis, and LLM classification over the Model Context Protocol, paired with a React dashboard for triaging findings.</p>
+          <a href="https://github.com/Vault-Sentinel/vaultsentinel" target="_blank" class="text-blue-500 hover:underline inline-flex items-center">
+            View on GitHub
+            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+            </svg>
+          </a>
+        </div>
+
+        <!-- NBA Win Probability Streaming Project -->
+        <div class="p-4 border rounded-lg shadow-sm text-center hover:shadow-md transition-shadow">
+          <span class="inline-block mb-2 px-3 py-1 text-xs font-semibold text-blue-700 bg-blue-100 rounded-full">Deployed</span>
+          <h3 class="text-xl font-bold mb-2">NBA Real-Time Win Probability</h3>
+          <p class="text-gray-600 mb-4">Streamed live NBA play-by-play data through Kafka and Flink SQL to enrich game state on the fly, then served neural network win probability predictions to a React dashboard on Cloud Run.</p>
+          <a href="https://github.com/msds-dwoodbridge/project-checkin-sj-lebron" target="_blank" class="text-blue-500 hover:underline inline-flex items-center">
+            View on GitHub
+            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+            </svg>
+          </a>
+        </div>
+
+        <!-- Loom.AI Project -->
+        <div class="p-4 border rounded-lg shadow-sm text-center hover:shadow-md transition-shadow">
+          <span class="inline-block mb-2 px-3 py-1 text-xs font-semibold text-blue-700 bg-blue-100 rounded-full">Deployed</span>
+          <h3 class="text-xl font-bold mb-2">Loom.AI</h3>
+          <p class="text-gray-600 mb-4">Developed a neural style transfer platform that reimagines user photos in the style of famous art movements, backed by a PyTorch training pipeline orchestrated with Metaflow and DVC.</p>
+          <a href="https://github.com/loom-styleblender/loom.ai" target="_blank" class="text-blue-500 hover:underline inline-flex items-center">
+            View on GitHub
+            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+            </svg>
+          </a>
+        </div>
+
         <!-- Causal Inference Project -->
         <div class="p-4 border rounded-lg shadow-sm text-center hover:shadow-md transition-shadow">
           <h3 class="text-xl font-bold mb-2">Causal Inference Analysis</h3>
@@ -89,42 +128,6 @@
           <h3 class="text-xl font-bold mb-2">Lung Cancer Classification</h3>
           <p class="text-gray-600 mb-4">Developed a machine learning model for early detection of lung cancer using medical imaging data and advanced classification techniques.</p>
           <a href="https://github.com/ynaung24/Lung-Cancer-Classification" class="text-blue-500 hover:underline inline-flex items-center">
-            View on GitHub
-            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
-            </svg>
-          </a>
-        </div>
-
-        <!-- VaultSentinel Project -->
-        <div class="p-4 border rounded-lg shadow-sm text-center hover:shadow-md transition-shadow">
-          <h3 class="text-xl font-bold mb-2">VaultSentinel</h3>
-          <p class="text-gray-600 mb-4">Built a cloud-native secrets detection platform that scans repositories with a hybrid of regex, entropy analysis, and LLM classification over the Model Context Protocol, paired with a React dashboard for triaging findings.</p>
-          <a href="https://github.com/Vault-Sentinel/vaultsentinel" target="_blank" class="text-blue-500 hover:underline inline-flex items-center">
-            View on GitHub
-            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
-            </svg>
-          </a>
-        </div>
-
-        <!-- NBA Win Probability Streaming Project -->
-        <div class="p-4 border rounded-lg shadow-sm text-center hover:shadow-md transition-shadow">
-          <h3 class="text-xl font-bold mb-2">NBA Real-Time Win Probability</h3>
-          <p class="text-gray-600 mb-4">Streamed live NBA play-by-play data through Kafka and Flink SQL to enrich game state on the fly, then served neural network win probability predictions to a React dashboard on Cloud Run.</p>
-          <a href="https://github.com/msds-dwoodbridge/project-checkin-sj-lebron" target="_blank" class="text-blue-500 hover:underline inline-flex items-center">
-            View on GitHub
-            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
-            </svg>
-          </a>
-        </div>
-
-        <!-- Loom.AI Project -->
-        <div class="p-4 border rounded-lg shadow-sm text-center hover:shadow-md transition-shadow">
-          <h3 class="text-xl font-bold mb-2">Loom.AI</h3>
-          <p class="text-gray-600 mb-4">Developed a neural style transfer platform that reimagines user photos in the style of famous art movements, backed by a PyTorch training pipeline orchestrated with Metaflow and DVC.</p>
-          <a href="https://github.com/loom-styleblender/loom.ai" target="_blank" class="text-blue-500 hover:underline inline-flex items-center">
             View on GitHub
             <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
