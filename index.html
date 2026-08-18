@@ -527,5 +527,14 @@
       els.forEach(function (el) { observer.observe(el); });
     })();
   </script>
+
+  <!-- Ask-Yan chat widget — self-mounting via Shadow DOM, no other markup needed.
+       See github.com/ynaung24/project-jeff/tree/main/widget -->
+  <script
+    src="chat-widget.js"
+    defer
+    data-api-base="https://ask-yan-7dos63xcjq-uc.a.run.app"
+    data-turnstile-sitekey="0x4AAAAAAEUnnJMrwDn9x5aA"
+  ></script>
 </body>
 </html>
