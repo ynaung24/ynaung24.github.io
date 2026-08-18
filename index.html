@@ -5,246 +5,453 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Yan Naing Aung - AI Engineer and Data Scientist specializing in NLP, Generative AI, and scalable ML systems" />
   <meta name="keywords" content="AI Engineer, Data Scientist, NLP, Machine Learning, RAG, Generative AI" />
+  <meta name="color-scheme" content="light dark" />
   <title>Yan Naing Aung | AI Engineer & Data Scientist</title>
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2309090b'/%3E%3Ctext x='16' y='22' font-family='monospace' font-size='15' fill='%2334d399' text-anchor='middle'%3E%26gt;_%3C/text%3E%3C/svg%3E" />
+
+  <!-- Set theme before first paint to avoid flash -->
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem('theme');
+        var systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        var isDark = stored ? stored === 'dark' : systemDark;
+        if (isDark) document.documentElement.classList.add('dark');
+      } catch (e) {}
+    })();
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+  <style>
+    :root {
+      --color-bg: #ffffff;
+      --color-bg-alt: #f8fafc;
+      --color-bg-card: #ffffff;
+      --color-nav-bg: rgba(255, 255, 255, 0.75);
+      --color-border: #e2e8f0;
+      --color-heading: #0f172a;
+      --color-body: #475569;
+      --color-muted: #94a3b8;
+      --color-accent: #059669;
+      --color-accent-strong: #047857;
+      --color-accent-soft: #ecfdf5;
+      --color-accent-soft-border: rgba(5, 150, 105, 0.25);
+      --color-cta-text: #052e1f;
+      --dot-color: rgba(15, 23, 42, 0.08);
+    }
+    html.dark {
+      --color-bg: #09090b;
+      --color-bg-alt: rgba(24, 24, 27, 0.5);
+      --color-bg-card: rgba(24, 24, 27, 0.55);
+      --color-nav-bg: rgba(9, 9, 11, 0.75);
+      --color-border: #27272a;
+      --color-heading: #fafafa;
+      --color-body: #a1a1aa;
+      --color-muted: #71717a;
+      --color-accent: #34d399;
+      --color-accent-strong: #6ee7b7;
+      --color-accent-soft: rgba(52, 211, 153, 0.1);
+      --color-accent-soft-border: rgba(52, 211, 153, 0.3);
+      --color-cta-text: #052e1f;
+      --dot-color: rgba(226, 232, 240, 0.09);
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+      background-color: var(--color-bg);
+      color: var(--color-body);
+      transition: background-color 0.25s ease, color 0.25s ease;
+    }
+    .font-mono { font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace; }
+
+    .bg-page { background-color: var(--color-bg); }
+    .bg-alt { background-color: var(--color-bg-alt); }
+    .bg-card { background-color: var(--color-bg-card); }
+    .bg-nav {
+      background-color: var(--color-nav-bg);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+    .border-base { border-color: var(--color-border); }
+    .text-heading { color: var(--color-heading); }
+    .text-body { color: var(--color-body); }
+    .text-muted { color: var(--color-muted); }
+    .text-accent { color: var(--color-accent); }
+    .bg-accent { background-color: var(--color-accent); color: var(--color-cta-text); }
+    .bg-accent-soft { background-color: var(--color-accent-soft); }
+    .border-accent-soft { border-color: var(--color-accent-soft-border); }
+    a, button, .transition-base { transition: color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease; }
+    .hover-accent:hover { color: var(--color-accent); border-color: var(--color-accent); }
+    .chip { border: 1px solid var(--color-border); color: var(--color-body); }
+    .chip:hover { border-color: var(--color-accent); color: var(--color-accent); }
+    .card { background-color: var(--color-bg-card); border: 1px solid var(--color-border); }
+    .card:hover { border-color: var(--color-accent); box-shadow: 0 12px 30px -18px var(--color-accent); }
+
+    .bg-dot-grid {
+      background-image: radial-gradient(circle, var(--dot-color) 1px, transparent 1px);
+      background-size: 22px 22px;
+    }
+    .blink-cursor { animation: blink 1.1s steps(1) infinite; }
+    @keyframes blink { 50% { opacity: 0; } }
+
+    .reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal-visible { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .blink-cursor { animation: none; }
+    }
+  </style>
 </head>
-<body class="bg-gray-100 text-gray-800">
+<body class="antialiased">
+
+  <!-- Nav -->
+  <header class="fixed top-0 inset-x-0 z-50 border-b bg-nav border-base">
+    <div class="container mx-auto max-w-5xl px-4 sm:px-6 py-3 flex items-center justify-between">
+      <a href="#" class="font-mono text-sm sm:text-base font-semibold text-heading">
+        <span class="text-accent">~/</span>yan-naing-aung
+      </a>
+      <nav class="hidden md:flex items-center gap-6 font-mono text-sm text-body">
+        <a href="#about" class="hover-accent">about</a>
+        <a href="#projects" class="hover-accent">projects</a>
+        <a href="#skills" class="hover-accent">skills</a>
+        <a href="#contact" class="hover-accent">contact</a>
+      </nav>
+      <div class="flex items-center gap-2 sm:gap-3">
+        <a href="https://github.com/ynaung24" target="_blank" rel="noopener" aria-label="GitHub profile" class="p-2 rounded-lg text-body hover-accent">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.221-.253-4.556-1.113-4.556-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.026 2.747-1.026.546 1.378.202 2.397.1 2.65.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .268.18.58.688.482A10.02 10.02 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+          </svg>
+        </a>
+        <button id="theme-toggle" type="button" aria-label="Toggle dark mode" class="p-2 rounded-lg border border-base text-body hover-accent">
+          <svg id="icon-sun" class="w-4 h-4 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
+          </svg>
+          <svg id="icon-moon" class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
   <!-- Hero Section -->
-  <section class="min-h-screen flex flex-col justify-center items-center text-center p-4 bg-white">
-    <img src="images/profile.png" alt="Yan Naing Aung" class="w-40 h-40 md:w-48 md:h-48 rounded-full object-cover shadow-lg mb-6 ring-4 ring-blue-100">
-    <h1 class="text-4xl md:text-6xl font-bold mb-4">Yan Naing Aung</h1>
-    <p class="text-xl md:text-2xl text-gray-600">AI Engineer | Data Scientist</p>
-    <p class="mt-4 max-w-2xl">Turning complex data into powerful AI solutions and drawing causal inferences with machine learning algorithms.</p>
-    <a href="https://drive.google.com/file/d/157P-0v0IHnIuTJj2KwvMTqFCC2aKvmcl/view?usp=sharing" target="_blank" class="mt-8 px-8 py-4 bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 text-white text-lg font-semibold rounded-lg shadow-lg hover:from-blue-600 hover:via-blue-700 hover:to-blue-800 transform hover:scale-105 transition-all duration-200 inline-flex items-center">
+  <section class="relative min-h-screen flex flex-col justify-center items-center text-center px-4 pt-24 pb-10 overflow-hidden bg-page bg-dot-grid">
+    <img src="images/profile.png" alt="Yan Naing Aung" class="relative w-36 h-36 md:w-44 md:h-44 rounded-full object-cover shadow-xl mb-6" style="outline: 3px solid var(--color-accent-soft-border); outline-offset: 4px;">
+
+    <p class="relative font-mono text-sm sm:text-base text-accent mb-3">
+      <span class="text-muted">$</span> whoami<span class="blink-cursor">_</span>
+    </p>
+    <h1 class="relative text-4xl md:text-6xl font-extrabold tracking-tight text-heading mb-4">Yan Naing Aung</h1>
+    <div class="relative flex flex-wrap justify-center gap-2 mb-5">
+      <span class="px-3 py-1 font-mono text-xs sm:text-sm rounded-full border bg-accent-soft border-accent-soft text-accent">AI Engineer</span>
+      <span class="px-3 py-1 font-mono text-xs sm:text-sm rounded-full border bg-accent-soft border-accent-soft text-accent">Data Scientist</span>
+    </div>
+    <p class="relative mt-2 max-w-2xl text-body leading-relaxed">Turning complex data into powerful AI solutions and drawing causal inferences with machine learning algorithms.</p>
+
+    <a href="https://drive.google.com/file/d/157P-0v0IHnIuTJj2KwvMTqFCC2aKvmcl/view?usp=sharing" target="_blank" rel="noopener" class="relative mt-8 px-8 py-3.5 bg-accent text-base font-semibold rounded-lg shadow-lg hover:-translate-y-0.5 transition-base inline-flex items-center gap-2" style="box-shadow: 0 12px 24px -12px var(--color-accent);">
       View My Resume
-      <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
       </svg>
     </a>
-    <a href="#about" aria-label="Scroll to the About Me section" class="mt-8 flex flex-col items-center text-gray-500 hover:text-blue-600 transition-colors duration-200">
-      <span class="text-sm font-medium uppercase tracking-wider">Scroll to explore</span>
-      <svg class="w-6 h-6 mt-2 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+
+    <a href="#about" aria-label="Scroll to the About Me section" class="relative mt-10 flex flex-col items-center gap-2 text-muted hover-accent">
+      <span class="font-mono text-xs uppercase tracking-widest">scroll</span>
+      <svg class="w-5 h-5 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
       </svg>
     </a>
   </section>
 
   <!-- About Section -->
-  <section id="about" class="p-8 bg-gray-50">
-    <div class="container mx-auto max-w-4xl">
-      <h2 class="text-3xl font-semibold mb-6 text-center">About Me</h2>
-      <div class="space-y-5 text-gray-700 leading-relaxed">
+  <section id="about" style="scroll-margin-top: 5rem;" class="px-4 py-20 sm:py-24 bg-alt">
+    <div class="container mx-auto max-w-3xl reveal">
+      <p class="font-mono text-sm text-accent mb-2 tracking-wide">01 / about</p>
+      <h2 class="text-3xl font-bold mb-8 text-heading">About Me</h2>
+      <div class="space-y-5 text-body leading-relaxed">
         <p>Hello! I'm Yan, an AI Engineer and Data Scientist passionate about building intelligent systems that solve real-world problems. Currently, I'm developing a Retrieval Augmented Generation (RAG) system that handles over 1000 daily queries, combining the power of large language models with robust information retrieval.</p>
-        
+
         <p>My work focuses on the intersection of machine learning, natural language processing, and scalable system design. I'm particularly excited about projects involving Large Language Models, Generative AI, and building production-ready ML infrastructure that can serve millions of users.</p>
-        
+
         <p>When I'm not working, I explore new ideas through side projects. Here are a few I'm currently building:</p>
-        
-        <ul class="space-y-3 ml-6">
+
+        <ul class="space-y-3 ml-1">
           <li class="flex items-start">
-            <span class="text-blue-600 mr-3 mt-1 flex-shrink-0">▸</span>
+            <span class="font-mono text-accent mr-3 mt-0.5 flex-shrink-0">&gt;</span>
             <span>Developing a multi-modal emotion detection system for interview analysis using CNNs, RNNs, and LLMs, with an interactive dashboard for visualizing sentiment patterns and behavioral insights.</span>
           </li>
           <li class="flex items-start">
-            <span class="text-blue-600 mr-3 mt-1 flex-shrink-0">▸</span>
+            <span class="font-mono text-accent mr-3 mt-0.5 flex-shrink-0">&gt;</span>
             <span>Building a neural style transfer platform that blends artistic movements with user photographs, leveraging convolutional neural networks to create unique artistic renditions.</span>
           </li>
           <li class="flex items-start">
-            <span class="text-blue-600 mr-3 mt-1 flex-shrink-0">▸</span>
+            <span class="font-mono text-accent mr-3 mt-0.5 flex-shrink-0">&gt;</span>
             <span>Creating a personalized AI chatbot that mimics individual communication styles by training on user-specific corpora, powered by RAG for contextually aware responses.</span>
           </li>
         </ul>
-        
+
         <p class="pt-2">I'm always eager to collaborate on challenging problems at the intersection of AI and engineering. Feel free to reach out if you'd like to discuss ideas or explore potential opportunities!</p>
       </div>
     </div>
   </section>
 
   <!-- Projects Section -->
-  <section id="projects" class="p-8 bg-white">
-    <div class="container mx-auto max-w-4xl">
-      <h2 class="text-3xl font-semibold mb-2 text-center">Projects</h2>
-      <p class="text-sm text-gray-500 mb-6 text-center max-w-2xl mx-auto">Projects marked Deployed ran on cloud infrastructure and were tested end to end. Those live instances have since been taken offline to avoid ongoing hosting costs, so the source code is the best place to explore them.</p>
+  <section id="projects" style="scroll-margin-top: 5rem;" class="px-4 py-20 sm:py-24 bg-page">
+    <div class="container mx-auto max-w-5xl">
+      <div class="max-w-3xl mx-auto text-center reveal mb-12">
+        <p class="font-mono text-sm text-accent mb-2 tracking-wide">02 / projects</p>
+        <h2 class="text-3xl font-bold mb-3 text-heading">Projects</h2>
+        <p class="text-sm text-muted">Projects marked Deployed ran on cloud infrastructure and were tested end to end. Those live instances have since been taken offline to avoid ongoing hosting costs, so the source code is the best place to explore them.</p>
+      </div>
       <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+
         <!-- VaultSentinel Project -->
-        <div class="p-4 border rounded-lg shadow-sm text-center hover:shadow-md transition-shadow">
-          <span class="inline-block mb-2 px-3 py-1 text-xs font-semibold text-blue-700 bg-blue-100 rounded-full">Deployed</span>
-          <h3 class="text-xl font-bold mb-2">VaultSentinel</h3>
-          <p class="text-gray-600 mb-4">Built a cloud-native secrets detection platform that scans repositories with a hybrid of regex, entropy analysis, and LLM classification over the Model Context Protocol, paired with a React dashboard for triaging findings.</p>
-          <a href="https://github.com/Vault-Sentinel/vaultsentinel" target="_blank" class="text-blue-500 hover:underline inline-flex items-center">
+        <div class="reveal card p-6 rounded-xl text-left hover:-translate-y-1 transition-base">
+          <div class="flex items-start justify-between gap-2 mb-3">
+            <h3 class="font-mono text-lg font-bold text-heading">VaultSentinel</h3>
+            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-mono font-medium rounded-full whitespace-nowrap bg-accent-soft text-accent">
+              <span class="w-1.5 h-1.5 rounded-full" style="background-color: var(--color-accent);"></span>Deployed
+            </span>
+          </div>
+          <p class="text-sm text-body leading-relaxed mb-4">Built a cloud-native secrets detection platform that scans repositories with a hybrid of regex, entropy analysis, and LLM classification over the Model Context Protocol, paired with a React dashboard for triaging findings.</p>
+          <div class="flex flex-wrap gap-1.5 mb-4">
+            <span class="px-2 py-0.5 text-[11px] font-mono rounded chip">regex</span>
+            <span class="px-2 py-0.5 text-[11px] font-mono rounded chip">entropy analysis</span>
+            <span class="px-2 py-0.5 text-[11px] font-mono rounded chip">LLM classification</span>
+            <span class="px-2 py-0.5 text-[11px] font-mono rounded chip">MCP</span>
+            <span class="px-2 py-0.5 text-[11px] font-mono rounded chip">React</span>
+          </div>
+          <a href="https://github.com/Vault-Sentinel/vaultsentinel" target="_blank" rel="noopener" class="text-sm font-mono text-accent hover:underline inline-flex items-center gap-1">
             View on GitHub
-            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
             </svg>
           </a>
         </div>
 
         <!-- Hoop Oracle Project -->
-        <div class="p-4 border rounded-lg shadow-sm text-center hover:shadow-md transition-shadow">
-          <span class="inline-block mb-2 px-3 py-1 text-xs font-semibold text-blue-700 bg-blue-100 rounded-full">Deployed</span>
-          <h3 class="text-xl font-bold mb-2">Hoop Oracle</h3>
-          <p class="text-gray-600 mb-4">Streamed live NBA play-by-play data through Kafka and Flink SQL to enrich game state on the fly, then served neural network win probability predictions to a React dashboard on Cloud Run.</p>
-          <a href="https://ynaung.medium.com/hoop-oracle-predicting-live-nba-win-probability-using-real-time-streaming-data-364a9894eb13" target="_blank" class="text-blue-500 hover:underline inline-flex items-center">
+        <div class="reveal card p-6 rounded-xl text-left hover:-translate-y-1 transition-base">
+          <div class="flex items-start justify-between gap-2 mb-3">
+            <h3 class="font-mono text-lg font-bold text-heading">Hoop Oracle</h3>
+            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-mono font-medium rounded-full whitespace-nowrap bg-accent-soft text-accent">
+              <span class="w-1.5 h-1.5 rounded-full" style="background-color: var(--color-accent);"></span>Deployed
+            </span>
+          </div>
+          <p class="text-sm text-body leading-relaxed mb-4">Streamed live NBA play-by-play data through Kafka and Flink SQL to enrich game state on the fly, then served neural network win probability predictions to a React dashboard on Cloud Run.</p>
+          <div class="flex flex-wrap gap-1.5 mb-4">
+            <span class="px-2 py-0.5 text-[11px] font-mono rounded chip">Kafka</span>
+            <span class="px-2 py-0.5 text-[11px] font-mono rounded chip">Flink SQL</span>
+            <span class="px-2 py-0.5 text-[11px] font-mono rounded chip">neural network</span>
+            <span class="px-2 py-0.5 text-[11px] font-mono rounded chip">React</span>
+            <span class="px-2 py-0.5 text-[11px] font-mono rounded chip">Cloud Run</span>
+          </div>
+          <a href="https://ynaung.medium.com/hoop-oracle-predicting-live-nba-win-probability-using-real-time-streaming-data-364a9894eb13" target="_blank" rel="noopener" class="text-sm font-mono text-accent hover:underline inline-flex items-center gap-1">
             Read Blog Post
-            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
             </svg>
           </a>
         </div>
 
         <!-- Loom.AI Project -->
-        <div class="p-4 border rounded-lg shadow-sm text-center hover:shadow-md transition-shadow">
-          <span class="inline-block mb-2 px-3 py-1 text-xs font-semibold text-blue-700 bg-blue-100 rounded-full">Deployed</span>
-          <h3 class="text-xl font-bold mb-2">Loom.AI</h3>
-          <p class="text-gray-600 mb-4">Developed a neural style transfer platform that reimagines user photos in the style of famous art movements, backed by a PyTorch training pipeline orchestrated with Metaflow and DVC.</p>
-          <a href="https://github.com/loom-styleblender/loom.ai" target="_blank" class="text-blue-500 hover:underline inline-flex items-center">
+        <div class="reveal card p-6 rounded-xl text-left hover:-translate-y-1 transition-base">
+          <div class="flex items-start justify-between gap-2 mb-3">
+            <h3 class="font-mono text-lg font-bold text-heading">Loom.AI</h3>
+            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-mono font-medium rounded-full whitespace-nowrap bg-accent-soft text-accent">
+              <span class="w-1.5 h-1.5 rounded-full" style="background-color: var(--color-accent);"></span>Deployed
+            </span>
+          </div>
+          <p class="text-sm text-body leading-relaxed mb-4">Developed a neural style transfer platform that reimagines user photos in the style of famous art movements, backed by a PyTorch training pipeline orchestrated with Metaflow and DVC.</p>
+          <div class="flex flex-wrap gap-1.5 mb-4">
+            <span class="px-2 py-0.5 text-[11px] font-mono rounded chip">neural style transfer</span>
+            <span class="px-2 py-0.5 text-[11px] font-mono rounded chip">PyTorch</span>
+            <span class="px-2 py-0.5 text-[11px] font-mono rounded chip">Metaflow</span>
+            <span class="px-2 py-0.5 text-[11px] font-mono rounded chip">DVC</span>
+          </div>
+          <a href="https://github.com/loom-styleblender/loom.ai" target="_blank" rel="noopener" class="text-sm font-mono text-accent hover:underline inline-flex items-center gap-1">
             View on GitHub
-            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
             </svg>
           </a>
         </div>
 
         <!-- Causal Inference Project -->
-        <div class="p-4 border rounded-lg shadow-sm text-center hover:shadow-md transition-shadow">
-          <h3 class="text-xl font-bold mb-2">Causal Inference Analysis</h3>
-          <p class="text-gray-600 mb-4">Applied Difference-in-Differences (DiD) methodology to analyze treatment effects and draw causal inferences from observational data.</p>
-          <a href="https://github.com/ynaung24/Project-Experience/tree/main/Causal%20Inference" class="text-blue-500 hover:underline inline-flex items-center">
+        <div class="reveal card p-6 rounded-xl text-left hover:-translate-y-1 transition-base">
+          <div class="flex items-start justify-between gap-2 mb-3">
+            <h3 class="font-mono text-lg font-bold text-heading">Causal Inference Analysis</h3>
+            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-mono font-medium rounded-full whitespace-nowrap chip">
+              <span class="w-1.5 h-1.5 rounded-full" style="background-color: var(--color-muted);"></span>Source
+            </span>
+          </div>
+          <p class="text-sm text-body leading-relaxed mb-4">Applied Difference-in-Differences (DiD) methodology to analyze treatment effects and draw causal inferences from observational data.</p>
+          <div class="flex flex-wrap gap-1.5 mb-4">
+            <span class="px-2 py-0.5 text-[11px] font-mono rounded chip">Difference-in-Differences</span>
+            <span class="px-2 py-0.5 text-[11px] font-mono rounded chip">causal inference</span>
+          </div>
+          <a href="https://github.com/ynaung24/Project-Experience/tree/main/Causal%20Inference" class="text-sm font-mono text-accent hover:underline inline-flex items-center gap-1">
             View on GitHub
-            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
             </svg>
           </a>
         </div>
 
         <!-- Stock Price Prediction Project -->
-        <div class="p-4 border rounded-lg shadow-sm text-center hover:shadow-md transition-shadow">
-          <h3 class="text-xl font-bold mb-2">Stock Price Prediction</h3>
-          <p class="text-gray-600 mb-4">Built an Airflow pipeline for automated daily stock market data acquisition and analysis using MarketStack API and MongoDB Atlas.</p>
-          <a href="https://github.com/ynaung24/stock_price_prediction" class="text-blue-500 hover:underline inline-flex items-center">
+        <div class="reveal card p-6 rounded-xl text-left hover:-translate-y-1 transition-base">
+          <div class="flex items-start justify-between gap-2 mb-3">
+            <h3 class="font-mono text-lg font-bold text-heading">Stock Price Prediction</h3>
+            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-mono font-medium rounded-full whitespace-nowrap chip">
+              <span class="w-1.5 h-1.5 rounded-full" style="background-color: var(--color-muted);"></span>Source
+            </span>
+          </div>
+          <p class="text-sm text-body leading-relaxed mb-4">Built an Airflow pipeline for automated daily stock market data acquisition and analysis using MarketStack API and MongoDB Atlas.</p>
+          <div class="flex flex-wrap gap-1.5 mb-4">
+            <span class="px-2 py-0.5 text-[11px] font-mono rounded chip">Airflow</span>
+            <span class="px-2 py-0.5 text-[11px] font-mono rounded chip">MarketStack API</span>
+            <span class="px-2 py-0.5 text-[11px] font-mono rounded chip">MongoDB Atlas</span>
+          </div>
+          <a href="https://github.com/ynaung24/stock_price_prediction" class="text-sm font-mono text-accent hover:underline inline-flex items-center gap-1">
             View on GitHub
-            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
             </svg>
           </a>
         </div>
 
         <!-- Lung Cancer Classification Project -->
-        <div class="p-4 border rounded-lg shadow-sm text-center hover:shadow-md transition-shadow">
-          <h3 class="text-xl font-bold mb-2">Lung Cancer Classification</h3>
-          <p class="text-gray-600 mb-4">Developed a machine learning model for early detection of lung cancer using medical imaging data and advanced classification techniques.</p>
-          <a href="https://github.com/ynaung24/Lung-Cancer-Classification" class="text-blue-500 hover:underline inline-flex items-center">
+        <div class="reveal card p-6 rounded-xl text-left hover:-translate-y-1 transition-base">
+          <div class="flex items-start justify-between gap-2 mb-3">
+            <h3 class="font-mono text-lg font-bold text-heading">Lung Cancer Classification</h3>
+            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-mono font-medium rounded-full whitespace-nowrap chip">
+              <span class="w-1.5 h-1.5 rounded-full" style="background-color: var(--color-muted);"></span>Source
+            </span>
+          </div>
+          <p class="text-sm text-body leading-relaxed mb-4">Developed a machine learning model for early detection of lung cancer using medical imaging data and advanced classification techniques.</p>
+          <div class="flex flex-wrap gap-1.5 mb-4">
+            <span class="px-2 py-0.5 text-[11px] font-mono rounded chip">medical imaging</span>
+            <span class="px-2 py-0.5 text-[11px] font-mono rounded chip">classification</span>
+          </div>
+          <a href="https://github.com/ynaung24/Lung-Cancer-Classification" class="text-sm font-mono text-accent hover:underline inline-flex items-center gap-1">
             View on GitHub
-            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
             </svg>
           </a>
         </div>
+
       </div>
     </div>
   </section>
 
   <!-- Skills Section -->
-  <section id="skills" class="p-8 bg-gray-50">
+  <section id="skills" style="scroll-margin-top: 5rem;" class="px-4 py-20 sm:py-24 bg-alt">
     <div class="container mx-auto max-w-4xl">
-      <h2 class="text-3xl font-semibold mb-6 text-center">Skills</h2>
-      <div class="grid gap-x-12 gap-y-8 items-start md:grid-cols-2">
+      <div class="text-center reveal mb-12">
+        <p class="font-mono text-sm text-accent mb-2 tracking-wide">03 / skills</p>
+        <h2 class="text-3xl font-bold text-heading">Skills</h2>
+      </div>
+      <div class="grid gap-x-12 gap-y-10 items-start md:grid-cols-2 reveal">
         <div>
-          <h3 class="text-xs font-semibold uppercase tracking-widest text-gray-500 mb-3">Languages</h3>
+          <h3 class="font-mono text-xs font-semibold uppercase tracking-widest text-muted mb-3">// Languages</h3>
           <ul class="flex flex-wrap gap-2">
-            <li class="px-3 py-1 text-sm text-gray-700 bg-gray-100 rounded-full">Python</li>
-            <li class="px-3 py-1 text-sm text-gray-700 bg-gray-100 rounded-full">SQL</li>
-            <li class="px-3 py-1 text-sm text-gray-700 bg-gray-100 rounded-full">Bash</li>
-            <li class="px-3 py-1 text-sm text-gray-700 bg-gray-100 rounded-full">R</li>
+            <li class="px-3 py-1 font-mono text-sm rounded-md chip">Python</li>
+            <li class="px-3 py-1 font-mono text-sm rounded-md chip">SQL</li>
+            <li class="px-3 py-1 font-mono text-sm rounded-md chip">Bash</li>
+            <li class="px-3 py-1 font-mono text-sm rounded-md chip">R</li>
           </ul>
         </div>
 
         <div>
-          <h3 class="text-xs font-semibold uppercase tracking-widest text-gray-500 mb-3">Machine Learning &amp; AI</h3>
+          <h3 class="font-mono text-xs font-semibold uppercase tracking-widest text-muted mb-3">// Machine Learning &amp; AI</h3>
           <ul class="flex flex-wrap gap-2">
-            <li class="px-3 py-1 text-sm text-gray-700 bg-gray-100 rounded-full">PyTorch</li>
-            <li class="px-3 py-1 text-sm text-gray-700 bg-gray-100 rounded-full">TensorFlow</li>
-            <li class="px-3 py-1 text-sm text-gray-700 bg-gray-100 rounded-full">Scikit-learn</li>
-            <li class="px-3 py-1 text-sm text-gray-700 bg-gray-100 rounded-full">Hugging Face Transformers</li>
-            <li class="px-3 py-1 text-sm text-gray-700 bg-gray-100 rounded-full">LLMs &amp; RAG</li>
-            <li class="px-3 py-1 text-sm text-gray-700 bg-gray-100 rounded-full">Bedrock</li>
-            <li class="px-3 py-1 text-sm text-gray-700 bg-gray-100 rounded-full">Causal Inference</li>
+            <li class="px-3 py-1 font-mono text-sm rounded-md chip">PyTorch</li>
+            <li class="px-3 py-1 font-mono text-sm rounded-md chip">TensorFlow</li>
+            <li class="px-3 py-1 font-mono text-sm rounded-md chip">Scikit-learn</li>
+            <li class="px-3 py-1 font-mono text-sm rounded-md chip">Hugging Face Transformers</li>
+            <li class="px-3 py-1 font-mono text-sm rounded-md chip">LLMs &amp; RAG</li>
+            <li class="px-3 py-1 font-mono text-sm rounded-md chip">Bedrock</li>
+            <li class="px-3 py-1 font-mono text-sm rounded-md chip">Causal Inference</li>
           </ul>
         </div>
 
         <div>
-          <h3 class="text-xs font-semibold uppercase tracking-widest text-gray-500 mb-3">Data Engineering &amp; Streaming</h3>
+          <h3 class="font-mono text-xs font-semibold uppercase tracking-widest text-muted mb-3">// Data Engineering &amp; Streaming</h3>
           <ul class="flex flex-wrap gap-2">
-            <li class="px-3 py-1 text-sm text-gray-700 bg-gray-100 rounded-full">Spark</li>
-            <li class="px-3 py-1 text-sm text-gray-700 bg-gray-100 rounded-full">PySpark</li>
-            <li class="px-3 py-1 text-sm text-gray-700 bg-gray-100 rounded-full">Kafka</li>
-            <li class="px-3 py-1 text-sm text-gray-700 bg-gray-100 rounded-full">Confluent</li>
-            <li class="px-3 py-1 text-sm text-gray-700 bg-gray-100 rounded-full">Pub/Sub</li>
-            <li class="px-3 py-1 text-sm text-gray-700 bg-gray-100 rounded-full">Dataflow</li>
-            <li class="px-3 py-1 text-sm text-gray-700 bg-gray-100 rounded-full">Dataproc</li>
-            <li class="px-3 py-1 text-sm text-gray-700 bg-gray-100 rounded-full">EMR</li>
+            <li class="px-3 py-1 font-mono text-sm rounded-md chip">Spark</li>
+            <li class="px-3 py-1 font-mono text-sm rounded-md chip">PySpark</li>
+            <li class="px-3 py-1 font-mono text-sm rounded-md chip">Kafka</li>
+            <li class="px-3 py-1 font-mono text-sm rounded-md chip">Confluent</li>
+            <li class="px-3 py-1 font-mono text-sm rounded-md chip">Pub/Sub</li>
+            <li class="px-3 py-1 font-mono text-sm rounded-md chip">Dataflow</li>
+            <li class="px-3 py-1 font-mono text-sm rounded-md chip">Dataproc</li>
+            <li class="px-3 py-1 font-mono text-sm rounded-md chip">EMR</li>
           </ul>
         </div>
 
         <div>
-          <h3 class="text-xs font-semibold uppercase tracking-widest text-gray-500 mb-3">Orchestration &amp; MLOps</h3>
+          <h3 class="font-mono text-xs font-semibold uppercase tracking-widest text-muted mb-3">// Orchestration &amp; MLOps</h3>
           <ul class="flex flex-wrap gap-2">
-            <li class="px-3 py-1 text-sm text-gray-700 bg-gray-100 rounded-full">Airflow</li>
-            <li class="px-3 py-1 text-sm text-gray-700 bg-gray-100 rounded-full">Prefect</li>
-            <li class="px-3 py-1 text-sm text-gray-700 bg-gray-100 rounded-full">Metaflow</li>
-            <li class="px-3 py-1 text-sm text-gray-700 bg-gray-100 rounded-full">MLflow</li>
-            <li class="px-3 py-1 text-sm text-gray-700 bg-gray-100 rounded-full">DVC</li>
-            <li class="px-3 py-1 text-sm text-gray-700 bg-gray-100 rounded-full">GitHub Actions</li>
-            <li class="px-3 py-1 text-sm text-gray-700 bg-gray-100 rounded-full">pytest</li>
+            <li class="px-3 py-1 font-mono text-sm rounded-md chip">Airflow</li>
+            <li class="px-3 py-1 font-mono text-sm rounded-md chip">Prefect</li>
+            <li class="px-3 py-1 font-mono text-sm rounded-md chip">Metaflow</li>
+            <li class="px-3 py-1 font-mono text-sm rounded-md chip">MLflow</li>
+            <li class="px-3 py-1 font-mono text-sm rounded-md chip">DVC</li>
+            <li class="px-3 py-1 font-mono text-sm rounded-md chip">GitHub Actions</li>
+            <li class="px-3 py-1 font-mono text-sm rounded-md chip">pytest</li>
           </ul>
         </div>
 
         <div>
-          <h3 class="text-xs font-semibold uppercase tracking-widest text-gray-500 mb-3">Data Stores &amp; Warehouses</h3>
+          <h3 class="font-mono text-xs font-semibold uppercase tracking-widest text-muted mb-3">// Data Stores &amp; Warehouses</h3>
           <ul class="flex flex-wrap gap-2">
-            <li class="px-3 py-1 text-sm text-gray-700 bg-gray-100 rounded-full">BigQuery</li>
-            <li class="px-3 py-1 text-sm text-gray-700 bg-gray-100 rounded-full">Snowflake</li>
-            <li class="px-3 py-1 text-sm text-gray-700 bg-gray-100 rounded-full">Databricks</li>
-            <li class="px-3 py-1 text-sm text-gray-700 bg-gray-100 rounded-full">PostgreSQL</li>
-            <li class="px-3 py-1 text-sm text-gray-700 bg-gray-100 rounded-full">MongoDB</li>
+            <li class="px-3 py-1 font-mono text-sm rounded-md chip">BigQuery</li>
+            <li class="px-3 py-1 font-mono text-sm rounded-md chip">Snowflake</li>
+            <li class="px-3 py-1 font-mono text-sm rounded-md chip">Databricks</li>
+            <li class="px-3 py-1 font-mono text-sm rounded-md chip">PostgreSQL</li>
+            <li class="px-3 py-1 font-mono text-sm rounded-md chip">MongoDB</li>
           </ul>
         </div>
 
         <div>
-          <h3 class="text-xs font-semibold uppercase tracking-widest text-gray-500 mb-3">Cloud &amp; Infrastructure</h3>
+          <h3 class="font-mono text-xs font-semibold uppercase tracking-widest text-muted mb-3">// Cloud &amp; Infrastructure</h3>
           <ul class="flex flex-wrap gap-2">
-            <li class="px-3 py-1 text-sm text-gray-700 bg-gray-100 rounded-full">Docker</li>
-            <li class="px-3 py-1 text-sm text-gray-700 bg-gray-100 rounded-full">Kubernetes</li>
-            <li class="px-3 py-1 text-sm text-gray-700 bg-gray-100 rounded-full">Terraform</li>
-            <li class="px-3 py-1 text-sm text-gray-700 bg-gray-100 rounded-full">Cloud Run</li>
-            <li class="px-3 py-1 text-sm text-gray-700 bg-gray-100 rounded-full">FastAPI</li>
-            <li class="px-3 py-1 text-sm text-gray-700 bg-gray-100 rounded-full">Vault</li>
-            <li class="px-3 py-1 text-sm text-gray-700 bg-gray-100 rounded-full">IAM</li>
-            <li class="px-3 py-1 text-sm text-gray-700 bg-gray-100 rounded-full">Prometheus</li>
-            <li class="px-3 py-1 text-sm text-gray-700 bg-gray-100 rounded-full">Grafana</li>
+            <li class="px-3 py-1 font-mono text-sm rounded-md chip">Docker</li>
+            <li class="px-3 py-1 font-mono text-sm rounded-md chip">Kubernetes</li>
+            <li class="px-3 py-1 font-mono text-sm rounded-md chip">Terraform</li>
+            <li class="px-3 py-1 font-mono text-sm rounded-md chip">Cloud Run</li>
+            <li class="px-3 py-1 font-mono text-sm rounded-md chip">FastAPI</li>
+            <li class="px-3 py-1 font-mono text-sm rounded-md chip">Vault</li>
+            <li class="px-3 py-1 font-mono text-sm rounded-md chip">IAM</li>
+            <li class="px-3 py-1 font-mono text-sm rounded-md chip">Prometheus</li>
+            <li class="px-3 py-1 font-mono text-sm rounded-md chip">Grafana</li>
           </ul>
         </div>
 
         <div>
-          <h3 class="text-xs font-semibold uppercase tracking-widest text-gray-500 mb-3">Analytics &amp; Visualization</h3>
+          <h3 class="font-mono text-xs font-semibold uppercase tracking-widest text-muted mb-3">// Analytics &amp; Visualization</h3>
           <ul class="flex flex-wrap gap-2">
-            <li class="px-3 py-1 text-sm text-gray-700 bg-gray-100 rounded-full">Pandas</li>
-            <li class="px-3 py-1 text-sm text-gray-700 bg-gray-100 rounded-full">NumPy</li>
-            <li class="px-3 py-1 text-sm text-gray-700 bg-gray-100 rounded-full">Matplotlib</li>
-            <li class="px-3 py-1 text-sm text-gray-700 bg-gray-100 rounded-full">Streamlit</li>
-            <li class="px-3 py-1 text-sm text-gray-700 bg-gray-100 rounded-full">Tableau</li>
-            <li class="px-3 py-1 text-sm text-gray-700 bg-gray-100 rounded-full">Looker</li>
-            <li class="px-3 py-1 text-sm text-gray-700 bg-gray-100 rounded-full">Mode</li>
+            <li class="px-3 py-1 font-mono text-sm rounded-md chip">Pandas</li>
+            <li class="px-3 py-1 font-mono text-sm rounded-md chip">NumPy</li>
+            <li class="px-3 py-1 font-mono text-sm rounded-md chip">Matplotlib</li>
+            <li class="px-3 py-1 font-mono text-sm rounded-md chip">Streamlit</li>
+            <li class="px-3 py-1 font-mono text-sm rounded-md chip">Tableau</li>
+            <li class="px-3 py-1 font-mono text-sm rounded-md chip">Looker</li>
+            <li class="px-3 py-1 font-mono text-sm rounded-md chip">Mode</li>
           </ul>
         </div>
 
         <div>
-          <h3 class="text-xs font-semibold uppercase tracking-widest text-gray-500 mb-3">Collaboration</h3>
+          <h3 class="font-mono text-xs font-semibold uppercase tracking-widest text-muted mb-3">// Collaboration</h3>
           <ul class="flex flex-wrap gap-2">
-            <li class="px-3 py-1 text-sm text-gray-700 bg-gray-100 rounded-full">Git/GitHub</li>
-            <li class="px-3 py-1 text-sm text-gray-700 bg-gray-100 rounded-full">Atlassian</li>
-            <li class="px-3 py-1 text-sm text-gray-700 bg-gray-100 rounded-full">ClickUp</li>
+            <li class="px-3 py-1 font-mono text-sm rounded-md chip">Git/GitHub</li>
+            <li class="px-3 py-1 font-mono text-sm rounded-md chip">Atlassian</li>
+            <li class="px-3 py-1 font-mono text-sm rounded-md chip">ClickUp</li>
           </ul>
         </div>
       </div>
@@ -252,18 +459,73 @@
   </section>
 
   <!-- Contact Section -->
-  <section class="p-8 bg-white">
-    <div class="container mx-auto max-w-4xl">
-      <h2 class="text-3xl font-semibold mb-4 text-center">Contact</h2>
-      <div class="text-center">
-        <p>Email: <a href="mailto:jeffaung@gmail.com" class="text-blue-500 hover:underline">Email me</a></p>
-        <p>LinkedIn: <a href="https://linkedin.com/in/yannaingaung" class="text-blue-500 hover:underline">Connect with me on LinkedIn</a></p>
+  <section id="contact" style="scroll-margin-top: 5rem;" class="px-4 py-20 sm:py-24 bg-page">
+    <div class="container mx-auto max-w-2xl text-center reveal">
+      <p class="font-mono text-sm text-accent mb-2 tracking-wide">04 / contact</p>
+      <h2 class="text-3xl font-bold mb-8 text-heading">Contact</h2>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="mailto:jeffaung@gmail.com" class="card inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-mono text-sm text-heading hover-accent transition-base">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+          </svg>
+          Email me
+        </a>
+        <a href="https://linkedin.com/in/yannaingaung" target="_blank" rel="noopener" class="card inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-mono text-sm text-heading hover-accent transition-base">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667h-3.554V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+          </svg>
+          Connect on LinkedIn
+        </a>
       </div>
     </div>
   </section>
 
-  <footer class="p-4 text-center text-sm text-gray-500 bg-gray-100">
-    &copy; 2025 Yan Naing Aung. All rights reserved.
+  <footer class="border-t border-base px-4 py-8 bg-alt">
+    <div class="container mx-auto max-w-5xl flex flex-col sm:flex-row items-center justify-between gap-3">
+      <p class="font-mono text-xs text-muted">&copy; 2026 Yan Naing Aung. All rights reserved.</p>
+      <a href="https://github.com/ynaung24" target="_blank" rel="noopener" class="font-mono text-xs text-muted hover-accent">github.com/ynaung24</a>
+    </div>
   </footer>
+
+  <script>
+    // Theme toggle
+    (function () {
+      var toggle = document.getElementById('theme-toggle');
+      var sun = document.getElementById('icon-sun');
+      var moon = document.getElementById('icon-moon');
+      function updateIcons() {
+        var isDark = document.documentElement.classList.contains('dark');
+        sun.classList.toggle('hidden', !isDark);
+        moon.classList.toggle('hidden', isDark);
+      }
+      updateIcons();
+      toggle.addEventListener('click', function () {
+        document.documentElement.classList.toggle('dark');
+        try {
+          localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light');
+        } catch (e) {}
+        updateIcons();
+      });
+    })();
+
+    // Scroll reveal
+    (function () {
+      var els = document.querySelectorAll('.reveal');
+      var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduceMotion || !('IntersectionObserver' in window)) {
+        els.forEach(function (el) { el.classList.add('reveal-visible'); });
+        return;
+      }
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('reveal-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      els.forEach(function (el) { observer.observe(el); });
+    })();
+  </script>
 </body>
-</html> 
+</html>
