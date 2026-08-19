@@ -43,14 +43,23 @@
   var STYLE = "" +
     ":host{all:initial}" +
     "*{box-sizing:border-box;font-family:Inter,ui-sans-serif,system-ui,sans-serif}" +
-    ".launcher{position:fixed;bottom:20px;right:20px;width:52px;height:52px;border-radius:50%;" +
+    ".launcher{position:fixed;bottom:20px;right:20px;width:auto;height:52px;" +
+      "padding:0 18px 0 14px;gap:8px;border-radius:999px;" +
       "background:var(--color-accent,#059669);color:var(--color-cta-text,#052e1f);border:none;" +
       "cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.25);display:flex;align-items:center;" +
       "justify-content:center;transition:transform .15s ease;z-index:2147483000}" +
     ".launcher:hover{transform:scale(1.06)}" +
-    ".launcher svg{width:24px;height:24px}" +
+    ".launcher svg{width:24px;height:24px;flex:none}" +
+    ".launcher-label{font-size:14px;font-weight:600;white-space:nowrap}" +
+    "@media(max-width:480px){.launcher{width:52px;height:52px;padding:0;border-radius:50%}" +
+      ".launcher-label{display:none}}" +
     ".panel{position:fixed;bottom:84px;right:20px;width:min(380px,calc(100vw - 32px));" +
-      "height:min(560px,calc(100vh - 120px));background:var(--color-bg-card,#fff);" +
+      // --color-bg-card is intentionally translucent in dark mode (a frosted-glass
+      // look works for cards sitting on a static section background), but that
+      // same translucency turns the panel into a see-through overlay once the
+      // page scrolls behind it, so the panel uses the dedicated opaque token
+      // (--color-surface-solid) instead.
+      "height:min(560px,calc(100vh - 120px));background:var(--color-surface-solid,#fff);" +
       "border:1px solid var(--color-border,#e2e8f0);border-radius:16px;box-shadow:0 12px 40px rgba(0,0,0,.28);" +
       "display:flex;flex-direction:column;overflow:hidden;z-index:2147483000;" +
       "opacity:0;transform:translateY(12px) scale(.98);pointer-events:none;" +
@@ -115,15 +124,16 @@
   launcher.innerHTML =
     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">' +
     '<path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.86 9.86 0 0 1-4-.8L3 20l1.3-3.9A7.9 7.9 0 0 1 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8Z"/>' +
-    "</svg>";
+    "</svg>" +
+    '<span class="launcher-label">Ask about Yan</span>';
 
   var panel = el("div", "panel");
   panel.setAttribute("role", "dialog");
-  panel.setAttribute("aria-label", "Chat about Yan Naing Aung");
+  panel.setAttribute("aria-label", "Chat with Jeff, Yan's AI assistant");
 
   var header = el("div", "hd");
   var title = el("div", "hd-title");
-  title.innerHTML = '<span class="dot"></span>ask_yan';
+  title.innerHTML = '<span class="dot"></span>Jeff';
   var closeBtn = el("button", "hd-close", { "aria-label": "Close chat" });
   closeBtn.textContent = "✕";
   header.appendChild(title);
@@ -136,7 +146,7 @@
   var textarea = document.createElement("textarea");
   textarea.rows = 1;
   textarea.maxLength = MAX_CHARS;
-  textarea.placeholder = "Ask about his experience, projects, skills…";
+  textarea.placeholder = "Ask about Yan…";
   var sendBtn = el("button", "", { "aria-label": "Send", disabled: "true" });
   sendBtn.innerHTML =
     '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">' +
@@ -146,7 +156,7 @@
 
   var disclaimer = el("div", "disclaimer");
   disclaimer.textContent =
-    "AI-generated from Yan's own materials — may be inaccurate. Verify anything important directly.";
+    "Jeff is AI-generated from Yan's own materials — may be inaccurate. Verify anything important directly.";
 
   panel.appendChild(header);
   panel.appendChild(body);
@@ -409,15 +419,25 @@
       opened = true;
       appendMessage(
         "system",
-        "Ask me about Yan's experience, education, skills, or projects."
+        "Hey, I'm Jeff — Yan's AI assistant. Ask me about his experience, education, skills, or projects."
       );
       renderTurnstile();
       textarea.focus();
     }
   });
-  closeBtn.addEventListener("click", function () {
+  function closePanel() {
     panel.classList.remove("open");
     launcher.setAttribute("aria-expanded", "false");
+  }
+  closeBtn.addEventListener("click", closePanel);
+  // Click/tap anywhere outside the widget minimizes it. composedPath (rather
+  // than e.target) is required because target gets retargeted to the shadow
+  // host itself for events crossing the shadow boundary, which would make an
+  // inside click look indistinguishable from an outside one.
+  document.addEventListener("click", function (e) {
+    if (!panel.classList.contains("open")) return;
+    var path = e.composedPath ? e.composedPath() : [];
+    if (path.indexOf(host) === -1) closePanel();
   });
   textarea.addEventListener("input", function () {
     autoGrow();
