@@ -229,6 +229,11 @@
           clearTimeout(turnstileRetryTimer);
           turnstileToken = token;
           updateSendEnabled();
+          // Enter was pressed before verification finished — send it now.
+          if (pendingSend && !sending) {
+            pendingSend = false;
+            send();
+          }
         },
         "expired-callback": function () {
           // tokens expire after ~5 min; fetch a fresh one rather than
@@ -261,6 +266,7 @@
   // ---- send flow ----
   var history = []; // [{role, content}, ...] — resent in full each turn
   var sending = false;
+  var pendingSend = false; // Enter pressed while waiting for a Turnstile token
 
   function updateSendEnabled() {
     var hasText = textarea.value.trim().length > 0;
@@ -304,6 +310,16 @@
   function send() {
     var question = textarea.value.trim();
     if (!question || sending) return;
+
+    // The Enter key reaches here even while the Send button is disabled.
+    // Sending without a token gets a 403 "Could not verify your browser",
+    // so hold the question and let the Turnstile callback send it.
+    if (SITEKEY && !turnstileToken) {
+      pendingSend = true;
+      counter.textContent = "Verifying your browser…";
+      return;
+    }
+    pendingSend = false;
 
     sending = true;
     updateSendEnabled();
