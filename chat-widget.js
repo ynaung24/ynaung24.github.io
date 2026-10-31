@@ -94,7 +94,6 @@
     "@media(prefers-reduced-motion:reduce){.typing span{animation:none;opacity:.7}.panel{transition:none}.launcher{transition:none}}" +
     ".disclaimer{padding:7px 16px;font-size:10px;color:var(--color-muted,#94a3b8);" +
       "border-top:1px solid var(--color-border,#e2e8f0);flex:none;line-height:1.4}" +
-    ".tsbox{flex:none;padding:8px 16px 0}" +
     ".ft{flex:none;padding:10px 12px;border-top:1px solid var(--color-border,#e2e8f0);" +
       "display:flex;gap:8px;align-items:flex-end}" +
     ".ft textarea{flex:1;resize:none;border:1px solid var(--color-border,#e2e8f0);" +
@@ -141,7 +140,6 @@
 
   var body = el("div", "body");
   var counter = el("div", "counter");
-  var tsBox = el("div", "tsbox");
   var footer = el("div", "ft");
   var textarea = document.createElement("textarea");
   textarea.rows = 1;
@@ -161,7 +159,6 @@
   panel.appendChild(header);
   panel.appendChild(body);
   panel.appendChild(counter);
-  panel.appendChild(tsBox);
   panel.appendChild(footer);
   panel.appendChild(disclaimer);
 
@@ -200,20 +197,45 @@
     document.head.appendChild(s);
   }
 
+  // Turnstile lives in a light-DOM container, not inside the shadow root:
+  // its api.js looks its own iframe up from `document`, so a widget rendered
+  // in a shadow root issues the first token but then wedges (hidden inputs
+  // pile up, no new token), which disabled Send after the first question.
+  // Fixed-positioned just above the input row so the rare interactive
+  // challenge still appears where the visitor is looking.
+  var tsHost = document.createElement("div");
+  tsHost.id = "ask-yan-turnstile";
+  tsHost.style.cssText =
+    "position:fixed;right:28px;bottom:150px;z-index:2147483001;";
+  document.body.appendChild(tsHost);
+
+  var turnstileRetryTimer = null;
+
   function renderTurnstile() {
-    if (!SITEKEY || turnstileReady) return;
+    if (!SITEKEY) return;
     loadTurnstile(function () {
-      turnstileWidgetId = window.turnstile.render(tsBox, {
+      // turnstile.reset() was observed not to re-issue a token with
+      // appearance:interaction-only, so every refresh is a remove + render.
+      if (turnstileWidgetId !== null) {
+        try { window.turnstile.remove(turnstileWidgetId); } catch (e) {}
+        turnstileWidgetId = null;
+      }
+      clearTimeout(turnstileRetryTimer);
+      turnstileWidgetId = window.turnstile.render(tsHost, {
         sitekey: SITEKEY,
         appearance: "interaction-only",
         theme: "auto",
         callback: function (token) {
+          clearTimeout(turnstileRetryTimer);
           turnstileToken = token;
           updateSendEnabled();
         },
         "expired-callback": function () {
+          // tokens expire after ~5 min; fetch a fresh one rather than
+          // leaving Send disabled for a visitor who paused mid-chat
           turnstileToken = null;
           updateSendEnabled();
+          renderTurnstile();
         },
         "error-callback": function () {
           turnstileToken = null;
@@ -221,17 +243,19 @@
         },
       });
       turnstileReady = true;
+      // safety net: if no token shows up, try a clean render once more
+      turnstileRetryTimer = setTimeout(function () {
+        if (!turnstileToken) renderTurnstile();
+      }, 25000); // long enough not to cut off a slow-but-progressing check
     });
   }
 
   function refreshTurnstile() {
-    // A token is consumed the moment the server accepts it — reset forces
-    // Cloudflare to re-verify and fire `callback` again with a new one.
+    // A token is consumed the moment the server accepts it, so a new
+    // widget is rendered to obtain the next one.
     turnstileToken = null;
     updateSendEnabled();
-    if (window.turnstile && turnstileWidgetId !== null) {
-      window.turnstile.reset(turnstileWidgetId);
-    }
+    if (turnstileReady) renderTurnstile();
   }
 
   // ---- send flow ----
@@ -293,6 +317,10 @@
     var fullText = "";
     var turnCommitted = false; // guards against double-pushing to history
     var tokenForThisRequest = turnstileToken;
+    // This token is spent the moment it's sent, so start fetching the next
+    // one now — the check (often several seconds) overlaps the model's answer
+    // instead of making the visitor wait after it before they can follow up.
+    refreshTurnstile();
 
     fetch(API_BASE.replace(/\/$/, "") + "/chat/stream", {
       method: "POST",
@@ -344,12 +372,18 @@
       })
       .catch(function (err) {
         typing.remove();
-        var m = appendMessage("bot", err.message || "Something went wrong. Please try again.");
+        // fetch() rejects with a TypeError ("Failed to fetch") when the request
+        // never gets a usable response — backend down, cold-start timeout, or
+        // a 5xx page without CORS headers. Errors the server returns on purpose
+        // are plain Errors carrying its own message, so they pass through.
+        var msg = err instanceof TypeError
+          ? "Ask-Yan is offline right now — please try again in a minute."
+          : err.message || "Something went wrong. Please try again.";
+        var m = appendMessage("bot", msg);
         m.classList.add("err");
       })
       .finally(function () {
         sending = false;
-        refreshTurnstile(); // this request's token is spent either way
         updateSendEnabled();
       });
 
@@ -412,8 +446,8 @@
 
   // ---- wiring ----
   var opened = false;
-  launcher.addEventListener("click", function () {
-    var isOpen = panel.classList.toggle("open");
+  function setOpen(isOpen) {
+    panel.classList.toggle("open", isOpen);
     launcher.setAttribute("aria-expanded", String(isOpen));
     if (isOpen && !opened) {
       opened = true;
@@ -424,11 +458,16 @@
       renderTurnstile();
       textarea.focus();
     }
+  }
+  launcher.addEventListener("click", function () {
+    setOpen(!panel.classList.contains("open"));
   });
   function closePanel() {
-    panel.classList.remove("open");
-    launcher.setAttribute("aria-expanded", "false");
+    setOpen(false);
   }
+  // Lets page content (e.g. the Project Jeff card) open the chat. Callers must
+  // stop propagation of their click, or the outside-click handler below closes it.
+  window.YanChat = { open: function () { setOpen(true); } };
   closeBtn.addEventListener("click", closePanel);
   // Click/tap anywhere outside the widget minimizes it. composedPath (rather
   // than e.target) is required because target gets retargeted to the shadow
@@ -437,7 +476,9 @@
   document.addEventListener("click", function (e) {
     if (!panel.classList.contains("open")) return;
     var path = e.composedPath ? e.composedPath() : [];
-    if (path.indexOf(host) === -1) closePanel();
+    // tsHost sits outside the shadow root (see Turnstile note above); a click
+    // on an interactive challenge there must not count as "outside".
+    if (path.indexOf(host) === -1 && path.indexOf(tsHost) === -1) closePanel();
   });
   textarea.addEventListener("input", function () {
     autoGrow();
