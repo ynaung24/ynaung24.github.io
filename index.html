@@ -119,6 +119,7 @@
       </a>
       <nav class="hidden md:flex items-center gap-6 font-mono text-sm text-body">
         <a href="#about" class="hover-accent">about</a>
+        <a href="#experience" class="hover-accent">experience</a>
         <a href="#projects" class="hover-accent">projects</a>
         <a href="#skills" class="hover-accent">skills</a>
         <a href="#contact" class="hover-accent">contact</a>
@@ -152,8 +153,13 @@
     <div class="relative flex flex-wrap justify-center gap-2 mb-5">
       <span class="px-3 py-1 font-mono text-xs sm:text-sm rounded-full border bg-accent-soft border-accent-soft text-accent">AI Engineer</span>
       <span class="px-3 py-1 font-mono text-xs sm:text-sm rounded-full border bg-accent-soft border-accent-soft text-accent">Data Scientist</span>
+      <span class="px-3 py-1 font-mono text-xs sm:text-sm rounded-full border bg-accent-soft border-accent-soft text-accent">Researcher</span>
     </div>
-    <p class="relative mt-2 max-w-2xl text-body leading-relaxed">Turning complex data into powerful AI solutions and drawing causal inferences with machine learning algorithms.</p>
+    <p class="relative mt-2 max-w-2xl text-body leading-relaxed">Building grounded RAG and agentic LLM systems, and drawing careful causal and mixed-methods conclusions from data. Currently a Research Assistant at the University of San Francisco.</p>
+    <p class="relative mt-4 inline-flex items-center gap-2 font-mono text-xs sm:text-sm text-muted">
+      <span class="w-2 h-2 rounded-full" style="background-color: var(--color-accent);" aria-hidden="true"></span>
+      Open to AI Engineer / Data Scientist roles &middot; San Francisco, CA
+    </p>
 
     <a href="https://drive.google.com/file/d/1C0004uqslme6bRp9voNJA6iGbZSLrPuN/view?usp=sharing" target="_blank" rel="noopener" class="relative mt-8 px-8 py-3.5 bg-accent text-base font-semibold rounded-lg shadow-lg hover:-translate-y-0.5 transition-base inline-flex items-center gap-2" style="box-shadow: 0 12px 24px -12px var(--color-accent);">
       View My Resume
@@ -176,41 +182,136 @@
       <p class="font-mono text-sm text-accent mb-2 tracking-wide">01 / about</p>
       <h2 class="text-3xl font-bold mb-8 text-heading">About Me</h2>
       <div class="space-y-5 text-body leading-relaxed">
-        <p>Hello! I'm Yan, an AI Engineer and Data Scientist passionate about building intelligent systems that solve real-world problems. Currently, I'm developing a Retrieval Augmented Generation (RAG) system that handles over 1000 daily queries, combining the power of large language models with robust information retrieval.</p>
+        <p>Hello! I'm Yan, an AI Engineer and Data Scientist based in San Francisco. I finished my M.S. in Data Science and Engineering at the University of San Francisco in December 2025, after an M.S. in Applied Economics there. I'm now a Research Assistant at USF, working with a multi-institution team on a mixed-methods study of how physicists in Japan and the US are adopting AI.</p>
 
-        <p>My work focuses on the intersection of machine learning, natural language processing, and scalable system design. I'm particularly excited about projects involving Large Language Models, Generative AI, and building production-ready ML infrastructure that can serve millions of users.</p>
+        <p>Before that, I built a production RAG system on AWS Bedrock serving 1,000+ daily queries and multi-agent document workflows at Minty Living, and led the AI Trust Score framework for red-teaming enterprise LLMs at Tumeryk. I care most about LLM evaluation, grounding, and getting ML systems from notebook to production.</p>
 
-        <p>When I'm not working, I explore new ideas through side projects. Here are a few I'm currently building:</p>
+        <p>Want a quick tour? Click <span class="font-mono text-accent">Ask about Yan</span> in the corner to chat with Jeff, a citation-grounded RAG assistant I built from scratch to answer questions about my background.</p>
 
-        <ul class="space-y-3 ml-1">
-          <li class="flex items-start">
-            <span class="font-mono text-accent mr-3 mt-0.5 flex-shrink-0">&gt;</span>
-            <span>Developing a multi-modal emotion detection system for interview analysis using CNNs, RNNs, and LLMs, with an interactive dashboard for visualizing sentiment patterns and behavioral insights.</span>
-          </li>
-          <li class="flex items-start">
-            <span class="font-mono text-accent mr-3 mt-0.5 flex-shrink-0">&gt;</span>
-            <span>Building a neural style transfer platform that blends artistic movements with user photographs, leveraging convolutional neural networks to create unique artistic renditions.</span>
-          </li>
-          <li class="flex items-start">
-            <span class="font-mono text-accent mr-3 mt-0.5 flex-shrink-0">&gt;</span>
-            <span>Creating a personalized AI chatbot that mimics individual communication styles by training on user-specific corpora, powered by RAG for contextually aware responses.</span>
-          </li>
-        </ul>
+        <p class="pt-2">I'm currently open to AI Engineer and Data Scientist roles. If you're working on challenging problems at the intersection of AI and engineering, I'd love to hear from you.</p>
+      </div>
+    </div>
+  </section>
 
-        <p class="pt-2">I'm always eager to collaborate on challenging problems at the intersection of AI and engineering. Feel free to reach out if you'd like to discuss ideas or explore potential opportunities!</p>
+  <!-- Experience Section -->
+  <section id="experience" style="scroll-margin-top: 5rem;" class="px-4 py-20 sm:py-24 bg-page">
+    <div class="container mx-auto max-w-3xl">
+      <div class="reveal mb-10">
+        <p class="font-mono text-sm text-accent mb-2 tracking-wide">02 / experience</p>
+        <h2 class="text-3xl font-bold text-heading">Experience</h2>
+      </div>
+
+      <ol class="relative border-l border-base ml-2 space-y-10">
+
+        <!-- USF Research Assistant -->
+        <li class="reveal pl-6 sm:pl-8 relative">
+          <span class="absolute top-1.5 w-3 h-3 rounded-full" style="left: -7px; background-color: var(--color-accent); box-shadow: 0 0 0 4px var(--color-accent-soft);" aria-hidden="true"></span>
+          <p class="font-mono text-xs text-accent mb-1">Aug 2026 &ndash; Present</p>
+          <h3 class="text-lg font-bold text-heading">Research Assistant</h3>
+          <p class="font-mono text-sm text-muted mb-3">University of San Francisco &middot; San Francisco, CA</p>
+          <ul class="space-y-2 text-sm text-body leading-relaxed">
+            <li class="flex items-start"><span class="font-mono text-accent mr-3 flex-shrink-0">&gt;</span><span>Co-designed an exploratory sequential mixed-methods study on physicists' attitudes toward AI, using workshop focus groups and interviews to shape a worldwide survey.</span></li>
+            <li class="flex items-start"><span class="font-mono text-accent mr-3 flex-shrink-0">&gt;</span><span>Administered and analyzed a survey of 200+ physicists across Japan and the US, owning all statistical analysis and coding for the dataset.</span></li>
+            <li class="flex items-start"><span class="font-mono text-accent mr-3 flex-shrink-0">&gt;</span><span>Authored the analytical plan for the education paper and synthesized the findings into a manuscript being prepared for peer-reviewed journal submission.</span></li>
+          </ul>
+          <a href="https://cd3.ipmu.jp/new-physicists/" target="_blank" rel="noopener" class="mt-3 text-sm font-mono text-accent hover:underline inline-flex items-center gap-1">
+            Project page
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+            </svg>
+          </a>
+        </li>
+
+        <!-- Minty Living -->
+        <li class="reveal pl-6 sm:pl-8 relative">
+          <span class="absolute top-1.5 w-3 h-3 rounded-full border-2 border-base" style="left: -7px; background-color: var(--color-bg);" aria-hidden="true"></span>
+          <p class="font-mono text-xs text-muted mb-1">Jan 2025 &ndash; Jun 2025</p>
+          <h3 class="text-lg font-bold text-heading">AI Engineer / Data Scientist</h3>
+          <p class="font-mono text-sm text-muted mb-3">Minty Living &middot; San Francisco, CA</p>
+          <ul class="space-y-2 text-sm text-body leading-relaxed">
+            <li class="flex items-start"><span class="font-mono text-accent mr-3 flex-shrink-0">&gt;</span><span>Built and ran a production RAG system on AWS Bedrock (Claude Sonnet, Titan embeddings in S3 Vectors) handling 1,000+ daily queries over 50+ proprietary documents.</span></li>
+            <li class="flex items-start"><span class="font-mono text-accent mr-3 flex-shrink-0">&gt;</span><span>Automated creation of 50+ structured task documents with a 3-stage CrewAI agentic workflow chaining extraction, reasoning, and synthesis.</span></li>
+            <li class="flex items-start"><span class="font-mono text-accent mr-3 flex-shrink-0">&gt;</span><span>Cut hallucination rates by 40% and improved retrieval relevance by 25% through grounding, chunking, and guardrails, validated on 30+ QA benchmarks.</span></li>
+          </ul>
+        </li>
+
+        <!-- Tumeryk -->
+        <li class="reveal pl-6 sm:pl-8 relative">
+          <span class="absolute top-1.5 w-3 h-3 rounded-full border-2 border-base" style="left: -7px; background-color: var(--color-bg);" aria-hidden="true"></span>
+          <p class="font-mono text-xs text-muted mb-1">Oct 2024 &ndash; Dec 2024</p>
+          <h3 class="text-lg font-bold text-heading">AI Engineer / Data Scientist</h3>
+          <p class="font-mono text-sm text-muted mb-3">Tumeryk &middot; San Francisco, CA</p>
+          <ul class="space-y-2 text-sm text-body leading-relaxed">
+            <li class="flex items-start"><span class="font-mono text-accent mr-3 flex-shrink-0">&gt;</span><span>Led development of the trademarked AI Trust Score framework, a FastAPI service with 100+ probes for jailbreaks, hallucinations, and offensive content in enterprise LLMs.</span></li>
+            <li class="flex items-start"><span class="font-mono text-accent mr-3 flex-shrink-0">&gt;</span><span>Integrated five policy-driven guardrails inspired by OWASP, garak, and NeMo Guardrails, improving risk flagging by 60%.</span></li>
+            <li class="flex items-start"><span class="font-mono text-accent mr-3 flex-shrink-0">&gt;</span><span>Deployed on AWS Lambda and ECS with 98%+ uptime, and benchmarked ChatGPT, Claude, and Gemini to surface failure modes before deployment.</span></li>
+          </ul>
+        </li>
+      </ol>
+
+      <!-- Education -->
+      <div class="reveal mt-16">
+        <h3 class="font-mono text-xs font-semibold uppercase tracking-widest text-muted mb-4">// Education</h3>
+        <div class="grid gap-4 sm:grid-cols-2">
+          <div class="card p-5 rounded-xl">
+            <p class="font-mono text-xs text-muted mb-1">2024 &ndash; Dec 2025</p>
+            <p class="font-bold text-heading">M.S. Data Science &amp; Engineering</p>
+            <p class="text-sm text-body">University of San Francisco</p>
+          </div>
+          <div class="card p-5 rounded-xl">
+            <p class="font-mono text-xs text-muted mb-1">2022 &ndash; 2024</p>
+            <p class="font-bold text-heading">M.S. Applied Economics</p>
+            <p class="text-sm text-body">University of San Francisco</p>
+          </div>
+          <div class="card p-5 rounded-xl">
+            <p class="font-mono text-xs text-muted mb-1">2017 &ndash; 2020</p>
+            <p class="font-bold text-heading">B.S. Managerial Economics</p>
+            <p class="text-sm text-body">UC Davis &middot; Minor in Technology Management</p>
+          </div>
+          <div class="card p-5 rounded-xl">
+            <p class="font-mono text-xs text-muted mb-1">Certification</p>
+            <p class="font-bold text-heading">AWS Certified Cloud Practitioner</p>
+            <p class="text-sm text-body">Amazon Web Services</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Projects Section -->
-  <section id="projects" style="scroll-margin-top: 5rem;" class="px-4 py-20 sm:py-24 bg-page">
+  <section id="projects" style="scroll-margin-top: 5rem;" class="px-4 py-20 sm:py-24 bg-alt">
     <div class="container mx-auto max-w-5xl">
       <div class="max-w-3xl mx-auto text-center reveal mb-12">
-        <p class="font-mono text-sm text-accent mb-2 tracking-wide">02 / projects</p>
+        <p class="font-mono text-sm text-accent mb-2 tracking-wide">03 / projects</p>
         <h2 class="text-3xl font-bold mb-3 text-heading">Projects</h2>
-        <p class="text-sm text-muted">Projects marked Deployed ran on cloud infrastructure and were tested end to end. Those live instances have since been taken offline to avoid ongoing hosting costs, so the source code is the best place to explore them.</p>
+        <p class="text-sm text-muted">Project Jeff is live on this site. Other projects marked Deployed ran on cloud infrastructure and were tested end to end; those instances have since been taken offline to avoid ongoing hosting costs, so the source code is the best place to explore them.</p>
       </div>
       <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+
+        <!-- Project Jeff -->
+        <div class="reveal card p-6 rounded-xl text-left hover:-translate-y-1 transition-base">
+          <div class="flex items-start justify-between gap-2 mb-3">
+            <h3 class="font-mono text-lg font-bold text-heading">Project Jeff</h3>
+            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-mono font-medium rounded-full whitespace-nowrap bg-accent-soft text-accent">
+              <span class="w-1.5 h-1.5 rounded-full animate-pulse" style="background-color: var(--color-accent);"></span>Live
+            </span>
+          </div>
+          <p class="text-sm text-body leading-relaxed mb-3">A hand-rolled RAG chatbot that answers questions about my background, fusing dense embeddings and BM25 with Reciprocal Rank Fusion, with no vector database or framework. Every answer must carry a verified Claude citation or it is blocked.</p>
+          <p class="font-mono text-xs text-muted mb-4">recall@5 0.977 &middot; MRR 0.817 &middot; 72/72 red-team</p>
+          <div class="flex flex-wrap gap-1.5 mb-4">
+            <span class="px-2 py-0.5 text-[11px] font-mono rounded chip">hybrid retrieval</span>
+            <span class="px-2 py-0.5 text-[11px] font-mono rounded chip">Claude citations</span>
+            <span class="px-2 py-0.5 text-[11px] font-mono rounded chip">Cloud Run</span>
+            <span class="px-2 py-0.5 text-[11px] font-mono rounded chip">Firestore</span>
+            <span class="px-2 py-0.5 text-[11px] font-mono rounded chip">eval &amp; red-team</span>
+          </div>
+          <button type="button" id="try-jeff" class="text-sm font-mono text-accent hover:underline inline-flex items-center gap-1">
+            Try it now
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/>
+            </svg>
+          </button>
+        </div>
 
         <!-- VaultSentinel Project -->
         <div class="reveal card p-6 rounded-xl text-left hover:-translate-y-1 transition-base">
@@ -244,7 +345,7 @@
               <span class="w-1.5 h-1.5 rounded-full" style="background-color: var(--color-accent);"></span>Deployed
             </span>
           </div>
-          <p class="text-sm text-body leading-relaxed mb-4">Streamed live NBA play-by-play data through Kafka and Flink SQL to enrich game state on the fly, then served neural network win probability predictions to a React dashboard on Cloud Run.</p>
+          <p class="text-sm text-body leading-relaxed mb-4">Team project that streams live NBA game data through Kafka and Flink SQL to enrich game state on the fly, then serves PyTorch win probability predictions to a React dashboard with sub-second end-to-end latency, all for about $20/month.</p>
           <div class="flex flex-wrap gap-1.5 mb-4">
             <span class="px-2 py-0.5 text-[11px] font-mono rounded chip">Kafka</span>
             <span class="px-2 py-0.5 text-[11px] font-mono rounded chip">Flink SQL</span>
@@ -291,12 +392,13 @@
               <span class="w-1.5 h-1.5 rounded-full" style="background-color: var(--color-muted);"></span>Source
             </span>
           </div>
-          <p class="text-sm text-body leading-relaxed mb-4">Applied Difference-in-Differences (DiD) methodology to analyze treatment effects and draw causal inferences from observational data.</p>
+          <p class="text-sm text-body leading-relaxed mb-4">Measured whether a golf app's premium features improved players' scores. A naive Difference-in-Differences showed a significant effect, but after propensity score matching it disappeared, revealing selection bias rather than a causal impact.</p>
           <div class="flex flex-wrap gap-1.5 mb-4">
             <span class="px-2 py-0.5 text-[11px] font-mono rounded chip">Difference-in-Differences</span>
+            <span class="px-2 py-0.5 text-[11px] font-mono rounded chip">propensity score matching</span>
             <span class="px-2 py-0.5 text-[11px] font-mono rounded chip">causal inference</span>
           </div>
-          <a href="https://github.com/ynaung24/Project-Experience/tree/main/Causal%20Inference" class="text-sm font-mono text-accent hover:underline inline-flex items-center gap-1">
+          <a href="https://github.com/ynaung24/Project-Experience/tree/main/Causal%20Inference" target="_blank" rel="noopener" class="text-sm font-mono text-accent hover:underline inline-flex items-center gap-1">
             View on GitHub
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
@@ -318,7 +420,7 @@
             <span class="px-2 py-0.5 text-[11px] font-mono rounded chip">MarketStack API</span>
             <span class="px-2 py-0.5 text-[11px] font-mono rounded chip">MongoDB Atlas</span>
           </div>
-          <a href="https://github.com/ynaung24/stock_price_prediction" class="text-sm font-mono text-accent hover:underline inline-flex items-center gap-1">
+          <a href="https://github.com/ynaung24/stock_price_prediction" target="_blank" rel="noopener" class="text-sm font-mono text-accent hover:underline inline-flex items-center gap-1">
             View on GitHub
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
@@ -334,17 +436,26 @@
               <span class="w-1.5 h-1.5 rounded-full" style="background-color: var(--color-muted);"></span>Source
             </span>
           </div>
-          <p class="text-sm text-body leading-relaxed mb-4">Developed a machine learning model for early detection of lung cancer using medical imaging data and advanced classification techniques.</p>
+          <p class="text-sm text-body leading-relaxed mb-4">Team project predicting lung cancer risk from 15 demographic and symptom predictors. Exhaustive best-subset selection over all 32,767 feature combinations produced a logistic regression model with 91.9% accuracy and a 95.4% F1 score, served in a Streamlit dashboard.</p>
           <div class="flex flex-wrap gap-1.5 mb-4">
-            <span class="px-2 py-0.5 text-[11px] font-mono rounded chip">medical imaging</span>
-            <span class="px-2 py-0.5 text-[11px] font-mono rounded chip">classification</span>
+            <span class="px-2 py-0.5 text-[11px] font-mono rounded chip">logistic regression</span>
+            <span class="px-2 py-0.5 text-[11px] font-mono rounded chip">best subset selection</span>
+            <span class="px-2 py-0.5 text-[11px] font-mono rounded chip">Streamlit</span>
           </div>
-          <a href="https://github.com/ynaung24/Lung-Cancer-Classification" class="text-sm font-mono text-accent hover:underline inline-flex items-center gap-1">
-            View on GitHub
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
-            </svg>
-          </a>
+          <div class="flex flex-wrap gap-x-4 gap-y-2">
+            <a href="https://github.com/ynaung24/Lung-Cancer-Classification" target="_blank" rel="noopener" class="text-sm font-mono text-accent hover:underline inline-flex items-center gap-1">
+              View on GitHub
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+              </svg>
+            </a>
+            <a href="https://medium.com/@abdullahberakucuk/classification-of-lung-cancer-diagnosis-based-on-15-predictors-da0072e38bd8" target="_blank" rel="noopener" class="text-sm font-mono text-accent hover:underline inline-flex items-center gap-1">
+              Read Blog Post
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+              </svg>
+            </a>
+          </div>
         </div>
 
       </div>
@@ -352,10 +463,10 @@
   </section>
 
   <!-- Skills Section -->
-  <section id="skills" style="scroll-margin-top: 5rem;" class="px-4 py-20 sm:py-24 bg-alt">
+  <section id="skills" style="scroll-margin-top: 5rem;" class="px-4 py-20 sm:py-24 bg-page">
     <div class="container mx-auto max-w-4xl">
       <div class="text-center reveal mb-12">
-        <p class="font-mono text-sm text-accent mb-2 tracking-wide">03 / skills</p>
+        <p class="font-mono text-sm text-accent mb-2 tracking-wide">04 / skills</p>
         <h2 class="text-3xl font-bold text-heading">Skills</h2>
       </div>
       <div class="grid gap-x-12 gap-y-10 items-start md:grid-cols-2 reveal">
@@ -377,8 +488,9 @@
             <li class="px-3 py-1 font-mono text-sm rounded-md chip">Scikit-learn</li>
             <li class="px-3 py-1 font-mono text-sm rounded-md chip">Hugging Face Transformers</li>
             <li class="px-3 py-1 font-mono text-sm rounded-md chip">LLMs &amp; RAG</li>
-            <li class="px-3 py-1 font-mono text-sm rounded-md chip">Bedrock</li>
+            <li class="px-3 py-1 font-mono text-sm rounded-md chip">AWS Bedrock</li>
             <li class="px-3 py-1 font-mono text-sm rounded-md chip">Causal Inference</li>
+            <li class="px-3 py-1 font-mono text-sm rounded-md chip">Claude Code</li>
           </ul>
         </div>
 
@@ -423,6 +535,7 @@
         <div>
           <h3 class="font-mono text-xs font-semibold uppercase tracking-widest text-muted mb-3">// Cloud &amp; Infrastructure</h3>
           <ul class="flex flex-wrap gap-2">
+            <li class="px-3 py-1 font-mono text-sm rounded-md chip">AWS Lambda &amp; ECS</li>
             <li class="px-3 py-1 font-mono text-sm rounded-md chip">Docker</li>
             <li class="px-3 py-1 font-mono text-sm rounded-md chip">Kubernetes</li>
             <li class="px-3 py-1 font-mono text-sm rounded-md chip">Terraform</li>
@@ -461,9 +574,9 @@
   </section>
 
   <!-- Contact Section -->
-  <section id="contact" style="scroll-margin-top: 5rem;" class="px-4 py-20 sm:py-24 bg-page">
+  <section id="contact" style="scroll-margin-top: 5rem;" class="px-4 py-20 sm:py-24 bg-alt">
     <div class="container mx-auto max-w-2xl text-center reveal">
-      <p class="font-mono text-sm text-accent mb-2 tracking-wide">04 / contact</p>
+      <p class="font-mono text-sm text-accent mb-2 tracking-wide">05 / contact</p>
       <h2 class="text-3xl font-bold mb-8 text-heading">Contact</h2>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
         <a href="mailto:jeffaung@gmail.com" class="card inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-mono text-sm text-heading hover-accent transition-base">
@@ -509,6 +622,13 @@
         updateIcons();
       });
     })();
+
+    // Project Jeff card opens the chat widget. stopPropagation keeps the
+    // widget's outside-click handler from closing it on the same click.
+    document.getElementById('try-jeff').addEventListener('click', function (e) {
+      e.stopPropagation();
+      if (window.YanChat) window.YanChat.open();
+    });
 
     // Scroll reveal
     (function () {
